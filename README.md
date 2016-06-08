@@ -1,6 +1,2 @@
-WARNNING
-==
-YOU SHOULD NOT BE HERE IF YOU ARE NOT TA     
-ALL THE MOVEMENT WILL BE RECORD    
-
-EE240500 Embedded System Laboratory
+# gesture-control-robot
+A propose robot using gesture recognition.
