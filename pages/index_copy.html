@@ -1,0 +1,1025 @@
+<!DOCTYPE html>
+<!--[if lt IE 8 ]><html class="no-js ie ie7" lang="en"> <![endif]-->
+<!--[if IE 8 ]><html class="no-js ie ie8" lang="en"> <![endif]-->
+<!--[if (gte IE 8)|!(IE)]><!--><html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+
+   <!--- Basic Page Needs
+   ================================================== -->
+   <meta charset="utf-8">
+	<title>Ching-Yao Chuang</title>
+	<meta name="description" content="HP of C.-Y. Chuang">
+	<meta name="author" content="Ching-Yao Chuang">
+
+   <!-- Mobile Specific Metas
+   ================================================== -->
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+	<!-- CSS
+    ================================================== -->
+   <link rel="stylesheet" href="css/default.css">
+   <link rel="stylesheet" href="css/layout.css">
+   <link rel="stylesheet" href="css/media-queries.css">
+   <link rel="stylesheet" href="css/magnific-popup.css">
+   <link rel="stylesheet" href="css/style.css">
+  
+   <!-- Script
+   ================================================== -->
+	<script src="js/modernizr.js"></script>
+  <!-- <script type="text/javascript" src="main.js"></script> -->
+  <!-- <style type="text/css"> -->
+  <!--     #canvas{
+            border: 2px solid #001;
+      }
+  </style> -->
+
+   <!-- Favicons
+	================================================== -->
+	<link rel="shortcut icon" href="favicon.png" >
+
+</head>
+
+<body>
+
+   <!-- Header
+   ================================================== -->
+   <header id="home">
+
+      <nav id="nav-wrap">
+
+         <a class="mobile-btn" href="#nav-wrap" title="Show navigation">Show navigation</a>
+	      <a class="mobile-btn" href="#" title="Hide navigation">Hide navigation</a>
+
+         <ul id="nav" class="nav">
+            <li class="current"><a class="smoothscroll" href="#home">Home</a></li>
+            <li><a class="smoothscroll" href="#about">About</a></li>
+	         <li><a class="smoothscroll" href="#resume">Resume</a></li>
+         </ul> <!-- end #nav -->
+
+      </nav> <!-- end #nav-wrap -->
+
+      <div class="row banner">
+         <div class="banner-text">
+            <h1 class="responsive-headline">Parking System Simulator</h1>
+            <h3><span>Car Parking System Simulator. Learn more </span><a class="smoothscroll" href="#about">about me</a><span> or </span><a class="smoothscroll" href="#contact">contact me</a>.</h3>
+            <hr />
+            <ul class="social">
+               <li><a href="http://www.facebook.com/james847286"><i class="fa fa-facebook"></i></a></li>
+               <li><a href="https://www.instagram.com/jamessssssssssssssssssssssss/"><i class="fa fa-instagram"></i></a></li>
+               <li><a href="https://plus.google.com/118153542032966159742/posts/p/pub"><i class="fa fa-google-plus"></i></a></li>
+               <!-- <li><a href="https://www.linkedin.com/in/mengjiunchiou"><i class="fa fa-linkedin"></i></a></li>
+               <!-- <li><a href="http://www.twitter.com/coldmanck"><i class="fa fa-twitter"></i></a></li>
+               <!-- <li><a href="#"><i class="fa fa-dribbble"></i></a></li> -->
+               <!-- <li><a href="#"><i class="fa fa-skype"></i></a></li> -->
+            </ul>
+         </div>
+      </div>
+
+      <p class="scrolldown">
+         <a class="smoothscroll" href="#about"><i class="icon-down-circle"></i></a>
+      </p>
+
+   </header> <!-- Header End -->
+
+
+   <!-- About Section
+   ================================================== -->
+   <section id="about">
+
+      <div class="row">
+
+         <div class="three columns">
+
+            <img class="profile-pic"  src="images/james.jpg" alt="" />
+
+         </div>
+
+         <div class="nine columns main-col">
+
+            <h2>About Me</h2>
+
+            <p>Now studying at Dep. of EE, National Tsing Hua University, Taiwan, I'm a passionate student
+            learning all about computer science. With C/C++, Java, Python
+            and MATLAB, I'm interested in machine learning and
+            computer recognition, and currently learning how to apply them in my research.
+            </p>
+
+            <div class="row">
+
+               <div class="columns contact-details">
+
+                  <h2>Contact Details</h2>
+                  <p class="address">
+						   <span>Ching-Yao Chuang</span><br>
+						   <span>Dep. of EE, NTHU, <br>
+						         Hsinchu City 30013, Taiwan
+                     </span><br>
+                     <span>james847286@gmail.com</span>
+					   </p>
+
+               </div>
+
+               <!-- <div class="columns download">
+                  <p>
+                     <a href="#" class="button"><i class="fa fa-download"></i>Download Resume</a>
+                  </p>
+               </div> -->
+
+            </div> <!-- end row -->
+
+         </div> <!-- end .main-col -->
+
+      </div>
+
+   <!-- <canvas id="cvs" width="600" height="250">[No canvas support]</canvas> -->
+
+   <div class="columns"> 
+   <h3>System simulation</h3>
+   <span id="stop">select mode</span>
+
+   <form name="form_name">
+   <select name="country">
+   <option value="mode1">mode1</option>
+   <option value="mode2">mode2</option>
+   <option value="mode3">mode3</option>
+   </select>
+   </form>
+
+   <form name="form2">
+   <select name="mode">
+   <option value="teach">Teaching Mode</option>
+   <option value="self">Selfdriving Mode</option>
+   </select>
+   </form>
+
+   <form name="form3">
+   <select name="replay">
+   <option value="realtime">Realtime</option>
+   <option value="replay">Replay</option>
+   </select>
+   </form>
+
+   </div>
+   <script src='http://cdnjs.cloudflare.com/ajax/libs/dat-gui/0.5/dat.gui.min.js'></script>
+   <!-- <script src="js/index.js"></script> -->
+   <script src="RGraph/libraries/RGraph.common.core.js" ></script>
+   <script src="RGraph/libraries/RGraph.common.context.js" ></script>
+   <script src="RGraph/libraries/RGraph.line.js" ></script>
+
+   <script>
+
+var carImage = new Image();
+carImage.src = 'http://s24.postimg.org/6ncwbhsbp/car_top.png';
+function Vector(p1, p2){
+    this.x = p1.x - p2.x;
+        this.y = p1.y - p2.y;
+
+        this.normalize = function(){
+                var norm = this;
+                return {x: norm.x/norm.length(), y: norm.y/norm.length()};
+        };
+        this.length = function(){
+                return Math.sqrt(this.x * this.x + this.y * this.y);
+        };
+}
+function Point(x, y){
+        this.x = x;
+        this.y = y;
+
+        this.addVector = function(v){
+                this.x += v.x;
+                this.y += v.y;
+        };
+        this.direction = null;
+}
+
+function lineDistance( point1, point2 )
+{
+    var xs = 0;
+    var ys = 0;
+
+    xs = point2.x - point1.x;
+    xs = xs * xs;
+
+    ys = point2.y - point1.y;
+    ys = ys * ys;
+
+    return Math.sqrt( xs + ys );
+}
+
+var canvas = document.createElement('canvas');
+var w = canvas.width = 900;
+var h = canvas.height = 1050;
+var c = canvas.getContext('2d');
+document.body.appendChild(canvas);
+
+// new canvas
+var canvas2 = document.createElement('canvas2');
+var w2 = canvas.width = 1850;
+var h2 = canvas.height = 1050;
+var c2 = canvas.getContext('2d');
+document.body.appendChild(canvas2);
+
+var form = document.form_name.country.value;
+var form2 = document.form2.mode.value;
+
+var rotateLeft = false;
+var rotateRight = false;
+var accelerate = false;
+var decelerate = false;
+var carBreak = false;
+
+var speed_memory = [];
+var angle_memory = [];
+var memoryCounter = 0;
+var replayCount = 0;
+
+//***************************
+/*
+document.onkeydown = function(e){
+  e.preventDefault();
+  switch(e.keyCode)
+  {
+    case 37:
+      rotateLeft = true;
+      break;
+    case 39:
+      rotateRight = true;
+      break;
+    case 38:
+      accelerate = true;
+	 car.speed +=0.02;
+      break;
+    case 40:
+      decelerate = true;
+      car.speed -= 0.02;
+      break;
+    case 32:
+      carBreak = true;
+      if(car.speed != 0)
+      {
+        //car.speed -= 1.2;
+        //if(car.speed < 0)
+          car.speed = 0;
+
+      }
+      break;
+    default:
+	carBreak = true;
+       car.speed = 0;
+       break;
+  }
+};
+
+document.onkeyup = function(e){
+  switch(e.keyCode)
+  {
+    case 37:
+      rotateLeft = false;
+      break;
+    case 39:
+      rotateRight = false;
+      break;
+    case 38:
+      accelerate = false;
+      break;
+    case 40:
+      decelerate = false;
+      break;
+    case 32:
+      carBreak = false;
+      break;
+  }
+
+};
+*/
+
+//****************************************************************
+
+//var move = setInterval(function()
+setInterval(function()
+{
+	form = document.form3.replay.value;	
+	if(form == "realtime"){
+	GetJsonData();
+	memoryCounter += 1;
+	speed_memory[memoryCounter] = car.speed;
+ 	angle_memory[memoryCounter] = car.wheelAngle;
+
+        keypress_handler(d1, d2, d3, d4);
+	//keyup_handler(d1, d2, d3);
+	}
+        else if(form == "replay") {
+	  replayCount += 1;
+	  if(replayCount < speed_memory.length) {
+	    car.speed = speed_memory[replayCount];
+  	    car.wheelAngle = angle_memory[replayCount];
+	  }
+	  else{
+	    car.speed = 0;
+	    car.wheelAngle = angle_memory[speed_memory.length-1];
+	  }
+	}
+	else{
+        GetJsonData();
+        memoryCounter += 1;
+        speed_memory[memoryCounter] = car.speed;
+        angle_memory[memoryCounter] = car.wheelAngle;
+
+        keypress_handler(d1, d2, d3, d4);
+
+	}
+
+}, 400);
+
+
+
+function keypress_handler(d1, d2, d3, d4){
+  if (d4[10] > 0.3)
+  {
+      carBreak = true;
+      car.speed = 0;
+  }
+  else if(d2[10] < -2500)
+  {
+      rotateRight = true;
+      if(car.wheelAngle < car.wheelMaxAngle)
+         car.wheelAngle = car.wheelAngle+car.wheelRotationStep;
+
+  }
+  else if(d2[10] > 2500)
+  {
+      rotateLeft = true;
+      if(car.wheelAngle > -car.wheelMaxAngle)
+         car.wheelAngle = car.wheelAngle-car.wheelRotationStep;
+
+  }
+  else if(d1[10] >  2000)
+  {
+      accelerate = true;
+      car.speed = 1.5;
+  }
+  else if(d1[10] < -2000)
+  {
+      decelerate = true;
+      car.speed = -1.5;
+  }
+  else{
+      carBreak = true;
+      if(car.speed > 1 )
+      {
+          car.speed -= 1;
+      }
+      else if(car.speed < -1)
+      {
+          car.speed += 1;
+      }
+      else 
+      {
+	  car.speed = 0;
+      }
+
+  }
+
+/*
+  if(d2[0] < -2000)
+  {
+      rotateRight = true;
+  }
+  else if(d2[0] > 2000)
+  {
+     peedotateLeft = true;
+  }
+    
+  else{
+      carBreak = true;
+      if(car.speed != 0)
+      {
+        //car.speed -= 1.2;
+        //if(car.speed < 0)
+          car.speed = 0;
+        
+      }
+
+     }
+  */
+};
+
+//document.onkeyup = function(d1,d2,d3){
+function keyup_handler(d1, d2, d3){
+/*
+  if(d1[0] >  2000)
+        {
+	   	rotateLeft = false;
+  	 	//car.wheelAngle = car.wheelAngle-car.wheelRotationStep;
+        }
+        //else if(d1[jobject.xarray.length-1] < -2000)
+  else if(d1[0] < -2000)
+        {
+		rotateRight = false;
+		//car.wheelAngle = car.wheelAngle+car.wheelRotationStep;
+        }
+  else if(d2[0] < -3000)
+        {
+                accelerate = false;
+        }
+  else if(d2[0] > 3000)
+        {
+                accelerate = false;
+        }
+  else
+	{
+		 carBreak = false;
+	}
+*/
+};
+
+
+document.getElementById('stop').onmousedown = function(){
+   console.log(animationId);
+   window.cancelAnimationFrame(animationId);
+  };
+
+
+function Wheel(pivot, x, y){
+  this.xPos = x;
+  this.yPos = y;
+};
+function Car(){
+  this.wheelRotationStep = 2.5;
+  //this.wheelRotationStep = 0.25;
+  this.wheelMaxAngle = 45;
+  this.wheelAngle = 0;
+  this.width = 100;
+  this.height = 200;
+  this.x = 300;
+  this.y = 800;
+  this.pivot = {x: this.x+50, y: this.y+20};
+  this.frontPivot = {x: 0, y: 0};
+  this.rearPivot = {x: 0, y: 160};
+  this.rotation = 0;
+  this.directionPivot = {x: this.frontPivot.x, y:this.frontPivot.y-50};
+  this.rearPivotAbs = {
+      x: 160 * Math.cos((this.rotation+90)*Math.PI/180)+this.pivot.x,
+      y: 160 * Math.sin((this.rotation+90)*Math.PI/180)+this.pivot.y
+    };
+  this.tempDirPivot = {x:0, y:0};
+  this.wheels = [];
+  this.wheels.push(new Wheel(this.pivot, -50, 0));
+  this.wheels.push(new Wheel(this.pivot, 50, 0));
+  this.wheels.push(new Wheel(this.pivot, -50, 160));
+  this.wheels.push(new Wheel(this.pivot, 50, 160));
+  this.speed = 0;
+  this.acceleration = 0.1;
+  //console.log(this.directionPivot, this.frontPivot);
+  this.direction = (new Vector(this.directionPivot, this.frontPivot)).normalize();
+  this.updateDirection = function(){
+    this.direction = (new Vector(this.directionPivot, this.frontPivot)).normalize();
+    this.direction.x *= this.speed;
+    this.direction.y *= this.speed;
+
+    //console.log('direction = '+this.direction);
+  };
+  this.drawWheels = function(){
+    for(var i = 0; i < this.wheels.length; i++)
+    {
+      var o = this.wheels[i];
+      /*
+      if(rotateLeft){
+        if(this.wheelAngle > -this.wheelMaxAngle)
+         this.wheelAngle = this.wheelAngle-this.wheelRotationStep;
+      }
+      if(rotateRight){
+        if(this.wheelAngle < this.wheelMaxAngle)
+         this.wheelAngle = this.wheelAngle+this.wheelRotationStep;
+      }
+      */
+      c.save();
+      /* Car Rotation */
+      c.translate(this.pivot.x, this.pivot.y);
+      c.rotate(this.rotation*Math.PI/180);
+      /* Wheel Rotation */
+      c.translate(o.xPos, o.yPos);
+      if(i < 2){
+        /* Only front wheels are rotating */
+        c.rotate((this.wheelAngle)*Math.PI/180);
+      }
+      c.fillStyle = 'red';
+      c.fillRect(-6, -15, 12, 30);
+      c.restore();
+
+      c2.save();
+      /* Car Rotation */
+      c2.translate(this.pivot.x+900, this.pivot.y);
+      c2.rotate(this.rotation*Math.PI/180);
+      /* Wheel Rotation */
+      c2.translate(o.xPos, o.yPos);
+      if(i < 2){
+        /* Only front wheels are rotating */
+        c2.rotate((this.wheelAngle)*Math.PI/180);
+      }
+      c2.fillStyle = 'red';
+      c2.fillRect(-6, -15, 5, 5);
+      c2.restore();
+
+    }
+    this.directionPivot.x = 50 * Math.cos((this.wheelAngle+this.rotation-90)*Math.PI/180)+this.frontPivot.x;
+    this.directionPivot.y = 50 * Math.sin((this.wheelAngle+this.rotation-90)*Math.PI/180)+this.frontPivot.y;
+
+    this.tempDirPivot.x = 50 * Math.cos((this.wheelAngle-90)*Math.PI/180)+this.frontPivot.x;
+    this.tempDirPivot.y = 50 * Math.sin((this.wheelAngle-90)*Math.PI/180)+this.frontPivot.x;
+
+    this.updateDirection();
+  };
+  this.drawCar = function(){
+    this.drawWheels();
+    c.save();
+    c.translate(this.pivot.x, this.pivot.y);
+    c.rotate(this.rotation*Math.PI/180);
+
+    var d = lineDistance({x:this.directionPivot.x, y:this.directionPivot.y}, this.pivot);
+    
+    this.x = d * Math.cos((this.wheels[0].rotation-90)*Math.PI/180)+this.frontPivot.x;
+    this.y = d * Math.sin((this.wheels[0].rotation-90)*Math.PI/180)+this.frontPivot.y;
+
+    //c.fillStyle="rgba(126,126,126,.5)";
+    //c.fillRect(-50,-20, this.width, this.height);
+
+    c.drawImage(carImage, -50,-20);
+
+    c.beginPath();
+
+    
+    c.moveTo(this.frontPivot.x-50, this.frontPivot.y);
+    c.lineTo(this.frontPivot.x+50, this.frontPivot.y);
+    c.moveTo(this.rearPivot.x-50, this.rearPivot.y);
+    c.lineTo(this.rearPivot.x+50, this.rearPivot.y);
+    c.moveTo(this.frontPivot.x, this.frontPivot.y);
+    c.lineTo(this.rearPivot.x, this.rearPivot.y);
+
+    c.moveTo(this.frontPivot.x, this.frontPivot.y);
+    c.lineTo(this.tempDirPivot.x, this.tempDirPivot.y);
+    c.strokeStyle="#fff";
+    c.stroke();
+    
+    //c.fillStyle='#fff';
+    //c.fillRect(this.directionPivot.x, this.directionPivot.y, 2, 2);
+    c.restore();
+  };
+  this.move = function(){
+    /*
+    if(accelerate){
+        //car.speed += car.acceleration;
+	car.speed = 1;}
+    else if(decelerate){
+        //car.speed -= car.acceleration;
+        car.speed = -1;}
+    else if(car.speed > 0){
+      car.speed -= 0.25;
+    }
+    //else if(decelerate)
+    //    car.speed -= car.acceleration;
+    else if(car.speed < 0){
+    	car.speed += 0.25;
+    }
+    else
+        car.speed = 0;
+    if(carBreak)
+      {
+        if(car.speed != 0)
+        {
+          //car.speed -= 1.2;
+          //if(car.speed < 0)
+            car.speed = 0;
+
+        }
+      }
+    */
+    //console.clear();
+    //console.log(this.direction);
+    this.pivot.x += this.direction.x;
+    this.pivot.y += this.direction.y;
+
+    //console.clear();
+
+    var v = new Vector(this.pivot, this.rearPivotAbs);
+    var rotation = Math.atan2(-v.y, v.x)*180/Math.PI;
+    rotation += 180;
+    rotation = 360 - rotation - 90;
+    this.rotation = rotation;
+
+     var rearPivotAbs = {
+      x: 160 * Math.cos((this.rotation+90)*Math.PI/180)+this.pivot.x,
+      y: 160 * Math.sin((this.rotation+90)*Math.PI/180)+this.pivot.y
+    };
+    this.rearPivotAbs = rearPivotAbs;
+
+    //console.log(this.pivot, rearPivotAbs, rotation);
+    //console.log(rearPivotAbs);
+  };
+};
+
+var car = new Car();
+
+var gui = new dat.GUI();
+  gui.add(car, 'rotation', 0, 360);
+  gui.add(car, 'speed', 0, 1);
+  gui.add(car, 'wheelAngle', -45, 45);
+
+c2.fillStyle = "#e1d3c1";
+c2.fillRect(900,0,w2,h2);
+
+var box_x = 600;
+var box_y = 300;
+var box_x2 = 200;
+var box_y2 = 50;
+var box_x3 = 50;
+var box_y3 = 350;
+
+function clean(){
+    c.clearRect(0,0,w,h);
+    c2.clearRect(0,0,w,h);
+    c.fillStyle = "#faebd7";
+    c.fillRect(0,0,w,h);
+    c2.fillStyle = "#e1d3c1";
+    c2.fillRect(900,0,w2,h2);
+    car = new Car();
+};
+
+var old_form = "mode1"
+var old_form2 = "teach"
+var old_form3 = "realtime"
+var check = function(){
+  form = document.form_name.country.value;
+  form2 = document.form2.mode.value;
+  form3 = document.form3.replay.value;
+  if(form2 != old_form2){
+    c.clearRect(0,0,w,h);
+    c2.clearRect(0,0,w,h);
+  }
+  if(form != old_form){
+    c.fillStyle = "#faebd7";
+    c.fillRect(0,0,w,h);
+    c2.fillStyle = "#e1d3c1";
+    c2.fillRect(900,0,w2,h2);
+    car = new Car();
+  }
+  if(form3 != old_form3){
+    if(form3 == "realtime"){
+      speed_memory = [];
+      angle_memory = [];
+    }
+
+    memoryCounter = 0;   
+    replayCount = 0; 
+
+    c.fillStyle = "#faebd7";
+    c.fillRect(0,0,w,h);
+    c2.fillStyle = "#e1d3c1";
+    c2.fillRect(900,0,w2,h2);
+    car = new Car();
+  }
+   
+  old_form = form;
+  old_form2 = form2;
+  old_form3 = form3;
+};
+
+var loop = function(){
+  form = document.form_name.country.value;
+
+  c.fillStyle = "#faebd7";
+  c.fillRect(0,0,w,h);
+  
+  if(form == "mode1"){
+  c.strokeStyle="#052525";
+  c.strokeRect(box_x, box_y, 150, 220);
+  c.fillStyle = "#052525";
+  c.fillRect(box_x,box_y-270,150,220);
+  c.fillStyle = "#052525";
+  c.fillRect(box_x,box_y+270,150,220);
+
+  if(form2 == "teach"){
+  c.beginPath();
+  c.moveTo(350,800);
+  c.quadraticCurveTo(box_x-200,box_y+200,box_x-50,box_y+50);
+  c.quadraticCurveTo(box_x-50,box_y,box_x-50,box_y-180);
+  c.quadraticCurveTo(box_x-140,box_y-85,box_x-140,box_y-10);
+  c.quadraticCurveTo(box_x,box_y+20,box_x,box_y+220);
+  c.stroke();
+  }
+  
+  c2.strokeStyle="#faebd7";
+  c2.strokeRect(box_x+900, box_y, 150, 220); 
+  c2.fillStyle = "#faebd7";
+  c2.fillRect(box_x+900,box_y-270,150,220);
+  c2.fillStyle = "#faebd7";
+  c2.fillRect(box_x+900,box_y+270,150,220);
+  }
+
+  if(form == "mode2"){
+  c.strokeStyle="#052525";
+  c.strokeRect(box_x2, box_y2, 150, 220);
+  c.fillStyle = "#052525";
+  c.fillRect(box_x2-180,box_y2, 150,220);
+  c.fillStyle = "#052525";
+  c.fillRect(box_x2+180,box_y2,150,220);
+  c.fillStyle = "#052525";
+  c.fillRect(box_x2+360,box_y2,150,220);
+
+  if(form2 == "teach"){ 
+  c.beginPath();
+  c.moveTo(350,800);
+  c.quadraticCurveTo(box_x2+160,box_y2+600,box_x2+75,box_y2+440);
+  c.quadraticCurveTo(box_x2+75,box_y2+220,box_x2+75,box_y2+220);
+  c.stroke();
+  }
+
+  c2.strokeStyle="#faebd7";
+  c2.strokeRect(box_x2+900, box_y2, 150, 220); 
+  c2.fillStyle = "#faebd7";
+  c2.fillRect(box_x2+900-180,box_y2,150,220);
+  c2.fillStyle = "#faebd7";
+  c2.fillRect(box_x2+900+180,box_y2,150,220);
+  c2.fillStyle = "#faebd7";
+  c2.fillRect(box_x2+900+360,box_y2,150,220);
+  }
+
+  if(form == "mode3"){
+  c.strokeStyle="#052525";
+  c.strokeRect(box_x3, box_y3, 220, 150);
+  c.fillStyle = "#052525";
+  c.fillRect(box_x3,box_y3-180, 220,150);
+  c.fillStyle = "#052525";
+  c.fillRect(box_x3,box_y3+180,220,150);
+  c.fillStyle = "#052525";
+  c.fillRect(box_x3,box_y3+360,220,150);
+
+  if(form2 == "teach"){
+  c.beginPath();
+  c.moveTo(350,800);
+  c.quadraticCurveTo(box_x3+300,box_y3+75,box_x3+300,box_y3+75);
+  c.quadraticCurveTo(box_x3+450,box_y3-60,box_x3+600,box_y3+75);
+  c.quadraticCurveTo(box_x3+220,box_y3+75,box_x3+220,box_y3+75);
+  c.stroke();
+  }
+
+  c2.strokeStyle="#faebd7";
+  c2.strokeRect(box_x3+900, box_y3, 220, 150); 
+  c2.fillStyle = "#faebd7";
+  c2.fillRect(box_x3+900,box_y3-180,220,150);
+  c2.fillStyle = "#faebd7";
+  c2.fillRect(box_x3+900,box_y3+180,220,150);
+  c2.fillStyle = "#faebd7";
+  c2.fillRect(box_x3+900,box_y3+360,220,150);
+  }
+
+  car.drawCar();
+  car.move();
+};
+(function() {
+    var lastTime = 0;
+    var vendors = ['webkit', 'moz'];
+    for(var x = 0; x < vendors.length && !window.requestAnimationFrame; ++x) {
+        window.requestAnimationFrame = window[vendors[x]+'RequestAnimationFrame'];
+        window.cancelAnimationFrame = window[vendors[x]+'RequestAnimationFrame'];
+          //window[vendors[x]+'CancelAnimationFrame'] || window[vendors[x]+'CancelRequestAnimationFrame'];
+    }
+
+    if (!window.requestAnimationFrame)
+        window.requestAnimationFrame = function(callback, element) {
+            var currTime = new Date().getTime();
+            var timeToCall = Math.max(0, 16 - (currTime - lastTime));
+            var id = window.setTimeout(function() { callback(currTime + timeToCall); },
+              timeToCall);
+            lastTime = currTime + timeToCall;
+            return id;
+        };
+
+    if (!window.cancelAnimationFrame)
+        window.cancelAnimationFrame = function(id) {
+            clearTimeout(id);
+        };
+}());
+(function animloop(){
+  window.animationId = window.requestAnimationFrame(animloop);
+  check();
+  loop();
+})();
+
+/*****************************
+Accelarator
+*****************************/
+
+    var batch=30;
+    var samples=batch;
+    var timecycle=0;
+    var requestCounter = 0;
+    var interval = 0;
+    var nodata = 0;
+    var serverAddressBase = "xdata.";
+    var serverAddress = "xdata.0"; //default file to get from server
+
+    d1 = [];
+    d2 = [];
+    d3 = [];
+    d4 = [];    
+
+    // Pre-pad the arrays with # of samples null values
+    for (var i=0; i< samples; ++i) {
+        d1.push(null);
+        d2.push(null);
+        d3.push(null);
+	d4.push(null);
+    }
+
+    var xmlHttp = createXmlHttpRequestObject();
+    function createXmlHttpRequestObject(){
+
+      // will store XMLHttpRequest object
+      // at here
+      var xmlHttp;
+
+      // works all exceprt IE6 and older  
+      try
+      {
+      
+        // try to create XMLHttpRequest object
+        xmlHttp = new XMLHttpRequest();    
+      }
+      catch(e)
+      {
+        // assume IE 6 or older
+        try
+        {
+          xmlHttp = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        catch(e){ }
+      }
+      
+      // return object or display error
+      if (!xmlHttp)
+        alert("Error creating the XMLHttpRequest Object");
+      else
+        return xmlHttp;
+    }
+    function GetJsonData()
+    {
+      //debug
+      //myDiv = document.getElementById("myDivElement"); 
+      //myDiv.innerHTML += "Getting Json Data<br>"; 
+      nodata=0;
+
+      if(xmlHttp)
+      {
+        try
+        {
+          xmlHttp.open("Get", serverAddress, false);
+          //xmlHttp.onreadystatechange = handleRequestStateChange; //We use synchronous data transfer, so we don't need this here
+          xmlHttp.send(null);
+          try{
+                  handleJsonData();
+          }
+          catch(err){
+             if(err=="no data"){
+                  alert('Waiting '+serverAddressBase+requestCounter);
+                  //setTimeout(GetJsonData(),5); //Try again 10ms later
+                  nodata=1; //record status
+             }
+          }
+        }
+        catch(e)
+        {
+	  //setTimeout(GetJsonData(),10);
+	  alert("Simulation Start\n");
+          //alert("Simulation Start\n" + e.toString());
+        }
+      }
+    }
+    function handleRequestStateChange()
+    {
+      if (xmlHttp.readyState == 4)
+      {
+        if(xmlHttp.status == 200|| xmlHttp.status == 0)
+            {
+              try
+              {
+                handleJsonData();
+              }
+              catch(e)
+              {
+                alert("Error reading the response: " + e.toString());
+              }
+            }
+            else
+            {
+              alert("Problem retrieving data:\n" + xmlHttp.statusText);
+            }
+      
+      
+      }
+      
+    }
+    function handleJsonData()
+    {
+      var result = xmlHttp.responseText;
+      if(result==''){
+        //alert('No data from xmlhttprequest object!');
+        throw "no data";
+      }
+      else{
+              try{
+                      var jobject = eval("(" + result + ")");
+                      var i=0;
+                      if(jobject.time>timecycle){
+                              timecycle=jobject.time;
+                              if(jobject.xarray.length==0){
+                                throw "no data";
+                              }
+                              else{
+                                      for (i=0;i<jobject.xarray.length;i++)
+                                      {
+                                          //debug
+                                          //myDiv.innerHTML += jobject.xarray[i][0] + ", " + jobject.xarray[i][1] + "<br>" ;
+                                          d1[i]=jobject.xarray[i][0];
+                                          d2[i]=jobject.xarray[i][1];
+                                          d3[i]=jobject.xarray[i][2];
+					  d4[i]=jobject.xarray[i][3];
+                                          /*
+                                          d1.push(jobject.xarray[i][0]); 
+                                          d2.push(jobject.xarray[i][1]); 
+                                          d3.push(jobject.xarray[i][2]);
+                                          */
+                                      }
+                              }
+                      }
+                      else{
+                        //Do nothing
+                      }
+              }
+              catch(e){
+                //Retry; ignore all json errors
+              }
+      }
+    }
+    function getGraph(id, d1, d2, d3)
+    {
+        var graph = new RGraph.Line(id, d1, d2, d3);
+        graph.Set('chart.key', ['Xacc', 'Yacc', 'Zacc']);
+        graph.Set('chart.xticks', 100);
+        graph.Set('chart.gutter', 25);
+        graph.Set('chart.background.barcolor1', 'white');
+        graph.Set('chart.background.barcolor2', 'white');
+        graph.Set('chart.title.xaxis', 'Time >>>');
+        graph.Set('chart.title.yaxis', 'Sensor');
+        graph.Set('chart.title', 'Sensor activities'+' xdata.'+requestCounter);
+        //graph.Set('chart.filled', true);
+        //graph.Set('chart.fillstyle', ['#daf1fa', '#faa']);
+        graph.Set('chart.colors', ['rgb(169, 222, 244)', 'red', 'blue']);
+        graph.Set('chart.linewidth', 1);
+        //graph.Set('chart.ylabels.inside', true);
+        graph.Set('chart.yaxispos', 'right');
+        graph.Set('chart.xaxispos', 'center');
+        //graph.Set('chart.ymin', -128);
+        //graph.Set('chart.ymax', 128);
+        graph.Set('chart.xticks', 25);
+
+        return graph;
+    }
+    function drawGraph ()
+    {
+        //debug
+        //myDiv = document.getElementById("myDivElement"); 
+        //myDiv.innerHTML += "Request # " + requestCounter + ": <br>"; 
+
+        RGraph.Clear(document.getElementById("cvs"));
+        
+        //Prepare new file name to get from
+        serverAddress=serverAddressBase+requestCounter;
+        //alert('Debug'+serverAddress);
+
+        //Save data from json object to the arrays
+        GetJsonData();
+        //Draw the graph
+        //var graph = getGraph('cvs', d1, d2, d3);
+        //graph.Draw();
+        if(!nodata){ //Keep the file counter
+                requestCounter=(requestCounter+1)%2; //cycle counter
+                //alert('Counter changed: '+requestCounter);
+        }
+        else{
+                //alert('Counter keeped: '+requestCounter);
+        }
+        setTimeout(drawGraph,30);
+    }
+
+    //drawGraph();
+
+
+
+</script>
+
+
+</body>
+
+</html>

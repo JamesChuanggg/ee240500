@@ -1,0 +1,250 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Getting 3D Sensor Data</title>
+
+<!-- 1/3. Include the RGraph libraries -->
+<script src="RGraph/libraries/RGraph.common.core.js" >
+<!--
+
+//-->
+</script>
+<script src="RGraph/libraries/RGraph.common.context.js" >
+<!--
+
+//-->
+</script>
+<script src="RGraph/libraries/RGraph.line.js" >
+<!--
+
+//-->
+</script>
+<!--[if IE 8]><script src="../excanvas/excanvas.compressed.js">
+<!--
+
+//-->
+</script><![endif]-->
+</head>
+
+<body>
+<canvas id="cvs" width="600" height="250">[No canvas support]</canvas>
+<!--
+Debug Informtion:
+<div id="myDivElement" />
+-->
+
+<script>
+<!--
+
+    var batch=30;
+    var samples=batch;
+    var timecycle=0;
+    var requestCounter = 0;
+    var interval = 0;
+    var nodata = 0;
+    var serverAddressBase = "xdata.";
+    var serverAddress = "xdata.0"; //default file to get from server
+
+    d1 = [];
+    d2 = [];
+    d3 = [];
+    
+    // Pre-pad the arrays with # of samples null values
+    for (var i=0; i< samples; ++i) {
+        d1.push(null);
+        d2.push(null);
+        d3.push(null);
+    }
+
+    var xmlHttp = createXmlHttpRequestObject();
+
+
+    // creates XMLHttpRequest Instance
+    function createXmlHttpRequestObject(){
+
+      // will store XMLHttpRequest object
+      // at here
+      var xmlHttp;
+
+      // works all exceprt IE6 and older  
+      try
+      {
+      
+	// try to create XMLHttpRequest object
+	xmlHttp = new XMLHttpRequest();    
+      }
+      catch(e)
+      {
+	// assume IE 6 or older
+	try
+	{
+	  xmlHttp = new ActiveXObject("Microsoft.XMLHTTP");
+	}
+	catch(e){ }
+      }
+      
+      // return object or display error
+      if (!xmlHttp)
+	alert("Error creating the XMLHttpRequest Object");
+      else
+	return xmlHttp;
+    }
+
+    function GetJsonData()
+    {
+      //debug
+      //myDiv = document.getElementById("myDivElement"); 
+      //myDiv.innerHTML += "Getting Json Data<br>"; 
+      nodata=0;
+
+      if(xmlHttp)
+      {
+	try
+	{
+	  xmlHttp.open("Get", serverAddress, false);
+	  //xmlHttp.onreadystatechange = handleRequestStateChange; //We use synchronous data transfer, so we don't need this here
+	  xmlHttp.send(null);
+	  try{
+		  handleJsonData();
+	  }
+	  catch(err){
+	     if(err=="no data"){
+	          //alert('Waiting '+serverAddressBase+requestCounter);
+		  //setTimeout(GetJsonData,10); //Try again 10ms later
+		  nodata=1; //record status
+	     }
+	  }
+	}
+	catch(e)
+	{
+	  alert("Can't connect to server\n" + e.toString());
+	}
+      }
+    }
+
+    function handleRequestStateChange()
+    {
+      if (xmlHttp.readyState == 4)
+      {
+	if(xmlHttp.status == 200|| xmlHttp.status == 0)
+	    {
+	      try
+	      {
+		handleJsonData();
+	      }
+	      catch(e)
+	      {
+		alert("Error reading the response: " + e.toString());
+	      }
+	    }
+	    else
+	    {
+	      alert("Problem retrieving data:\n" + xmlHttp.statusText);
+	    }
+      
+      
+      }
+      
+    }
+
+    function handleJsonData()
+    {
+      var result = xmlHttp.responseText;
+      if(result==''){
+        //alert('No data from xmlhttprequest object!');
+	throw "no data";
+      }
+      else{
+	      try{
+		      var jobject = eval("(" + result + ")");
+		      var i=0;
+		      if(jobject.time>timecycle){
+			      timecycle=jobject.time;
+			      if(jobject.xarray.length==0){
+				throw "no data";
+			      }
+			      else{
+				      for (i=0;i<jobject.xarray.length;i++)
+				      {
+					  //debug
+					  //myDiv.innerHTML += jobject.xarray[i][0] + ", " + jobject.xarray[i][1] + "<br>" ;
+					  d1[i]=jobject.xarray[i][0];
+					  d2[i]=jobject.xarray[i][1];
+					  d3[i]=jobject.xarray[i][2];
+					  /*
+					  d1.push(jobject.xarray[i][0]); 
+					  d2.push(jobject.xarray[i][1]); 
+					  d3.push(jobject.xarray[i][2]);
+					  */
+				      }
+			      }
+		      }
+		      else{
+			//Do nothing
+		      }
+	      }
+	      catch(e){
+		//Retry; ignore all json errors
+	      }
+      }
+    }
+
+    function getGraph(id, d1, d2, d3)
+    {
+	var graph = new RGraph.Line(id, d1, d2, d3);
+	graph.Set('chart.key', ['Xacc', 'Yacc', 'Zacc']);
+	graph.Set('chart.xticks', 100);
+	graph.Set('chart.gutter', 25);
+	graph.Set('chart.background.barcolor1', 'white');
+	graph.Set('chart.background.barcolor2', 'white');
+	graph.Set('chart.title.xaxis', 'Time >>>');
+	graph.Set('chart.title.yaxis', 'Sensor');
+	graph.Set('chart.title', 'Sensor activities'+' xdata.'+requestCounter);
+	//graph.Set('chart.filled', true);
+	//graph.Set('chart.fillstyle', ['#daf1fa', '#faa']);
+	graph.Set('chart.colors', ['rgb(169, 222, 244)', 'red', 'blue']);
+	graph.Set('chart.linewidth', 1);
+	//graph.Set('chart.ylabels.inside', true);
+	graph.Set('chart.yaxispos', 'right');
+	graph.Set('chart.xaxispos', 'center');
+	//graph.Set('chart.ymin', -128);
+	//graph.Set('chart.ymax', 128);
+	graph.Set('chart.xticks', 25);
+
+	return graph;
+    }
+
+    function drawGraph ()
+    {
+        //debug
+        //myDiv = document.getElementById("myDivElement"); 
+        //myDiv.innerHTML += "Request # " + requestCounter + ": <br>"; 
+
+	RGraph.Clear(document.getElementById("cvs"));
+	
+	//Prepare new file name to get from
+	serverAddress=serverAddressBase+requestCounter;
+	//alert('Debug'+serverAddress);
+
+        //Save data from json object to the arrays
+	GetJsonData();
+	//Draw the graph
+	var graph = getGraph('cvs', d1, d2, d3);
+	graph.Draw();
+	if(!nodata){ //Keep the file counter
+		requestCounter=(requestCounter+1)%2; //cycle counter
+		//alert('Counter changed: '+requestCounter);
+	}
+	else{
+		//alert('Counter keeped: '+requestCounter);
+	}
+	setTimeout(drawGraph,800);
+    }
+
+    drawGraph();
+
+//-->
+</script>
+</body>
+</html>
