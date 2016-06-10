@@ -1,4 +1,5 @@
 # EE240500 Embedded System Laboratory
+Details in wiki page.
 
 # Midterm
 Website of parking system simulator.
