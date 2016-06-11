@@ -79,7 +79,6 @@ int main( int argc, const char** argv)
 
                             for(size_t k=0;k<defects[i].size();k++){
                                 if(defects[i][k][3]>13*256){
-                                 //   int p_start=defects[i][k][0];
                                     int p_end=defects[i][k][1];
                                     int p_far=defects[i][k][2];
                                     defectPoint[i].push_back(contours[i][p_far]);
