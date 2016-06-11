@@ -8,16 +8,6 @@
 
 using namespace cv;
 using namespace std;
-/*
-int main(int argc, char *argv[])
-{
-    QApplication a(argc, argv);
-    mainWindow w(0);
-    w.show();
-    
-    return a.exec();
-}
-*/
 
 int main( int argc, const char** argv)
 {
@@ -102,37 +92,31 @@ int main( int argc, const char** argv)
                             xbee = new Xbee("/dev/ttyUSB0");
 
                             if(count==1){
-                                //strcpy(a,"Hello grin表情符號 ");
                                 strcpy(a, "1 ONE");
                                 xbee->setDir('1');
                                 xbee->start();
                             }
                             else if(count==2){
-                                //strcpy(a,"Peace slightsmile表情符號 ");
                                 strcpy(a, "2 PEACE");
                                 xbee->setDir('2');
                                 xbee->start();
                             }
                             else if(count==3){
-                                //strcpy(a,"3 it is !!");
                                 strcpy(a, "3 THREE");
                                 xbee->setDir('3');
                                 xbee->start();
                             }
                             else if(count==4){
-                                //strcpy(a,"0100");
                                 strcpy(a, "4 FOUR");
                                 xbee->setDir('4');
                                 xbee->start();
                             }
                             else if(count==5){
-                                //strcpy(a,"FIVE");
                                 strcpy(a, "5 FIVE");
                                 xbee->setDir('5');
                                 xbee->start();
                             }
                             else{
-                                //strcpy(a,"Welcome !!");
                                 strcpy(a, "Nothing");
                                 xbee->setDir('0');
                                 xbee->start();
@@ -172,3 +156,13 @@ int main( int argc, const char** argv)
      return 0;
 }
 
+/*
+int main(int argc, char *argv[])
+{
+    QApplication a(argc, argv);
+    mainWindow w(0);
+    w.show();
+    
+    return a.exec();
+}
+*/
